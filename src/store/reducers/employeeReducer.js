@@ -8,10 +8,10 @@ const initState = {
 
 const employeeReducer = (state = initState, action) => {
   switch (action.type) {
-    case "CREATE_PROJECT":
+    case "CREATE_EMPLOYEE":
       console.log("created employee", action.employee);
       return state;
-    case "CREATE_PROJECT_ERROR":
+    case "CREATE_EMPLOYEE_ERROR":
       console.log("create employee error", action.err);
       return state;
     default:

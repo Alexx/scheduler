@@ -11,10 +11,10 @@ export const createEmployee = employee => {
         createdAt: new Date()
       })
       .then(() => {
-        dispatch({ type: "CREATE_PROJECT", employee });
+        dispatch({ type: "CREATE_EMPLOYEE", employee });
       })
       .catch(err => {
-        dispatch({ type: "CREATE_PROJECT_ERROR", err });
+        dispatch({ type: "CREATE_EMPLOYEE_ERROR", err });
       });
   };
 };

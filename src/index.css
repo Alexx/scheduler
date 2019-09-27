@@ -5,11 +5,11 @@ html {
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  font-family: "Slabo 27px", serif;
   background: url(/img/mario-bg.png) no-repeat;
   background-size: 100%;
   background-position: bottom;
-  background-color: #cad6d4;
+  background-color: #38393f;
   min-height: 100%;
 }
 
@@ -26,18 +26,28 @@ form h5 {
 input[type="text"]:not(.browser-default):focus:not([readonly]),
 input[type="email"]:not(.browser-default):focus:not([readonly]),
 input[type="password"]:not(.browser-default):focus:not([readonly]),
+input.timepicker:not(.browser-default):focus:not([readonly]),
 textarea.materialize-textarea:focus:not([readonly]) {
-  border-color: #029b7c;
+  border-color: #06845b;
   box-shadow: none;
 }
 
 input[type="text"]:not(.browser-default):focus:not([readonly]) + label,
 textarea.materialize-textarea:focus:not([readonly]) + label,
 input[type="email"]:not(.browser-default):focus:not([readonly]) + label,
+input.timepicker:not(.browser-default):focus:not([readonly]) + label,
 input[type="password"]:not(.browser-default):focus:not([readonly]) + label {
-  color: #029b7c !important;
+  color: #06845b !important;
 }
 
 .btn-form {
-  background-color: #029b7c;
+  background-color: #06845b;
+}
+
+.logo-letter {
+  color: #06845b;
+}
+
+.brand-logo {
+  font-family: "Righteous", cursive;
 }
