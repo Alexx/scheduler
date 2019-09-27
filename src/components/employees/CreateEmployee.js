@@ -22,7 +22,7 @@ class CreateEmployee extends Component {
   render() {
     const { auth } = this.props;
 
-    if (!auth.uid) return <Redirect to="/signin" />;
+    if (!auth.uid) return <Redirect to="/login" />;
 
     return (
       <div className="container">
@@ -41,7 +41,7 @@ class CreateEmployee extends Component {
             <label htmlFor="lastName">Last Name</label>
           </div>
           <div className="input-field">
-            <button className="btn pink lighten-1">Create</button>
+            <button className="btn btn-form z-depth-0">Create</button>
           </div>
         </form>
       </div>
