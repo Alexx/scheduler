@@ -1,10 +1,8 @@
 # _Scheduler_
 
-#### _Project for Week 16 at the coding school, Epicodus, written on August 29, 2019._
+#### _By Alex Siegberg_
 
-#### By _\*\*Alex Siegberg_
-
-#### _September 27th, 2019\*\*_
+#### _September 27th, 2019_
 
 ## Description
 
