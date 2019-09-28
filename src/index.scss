@@ -1,3 +1,8 @@
+$blur: 20px;
+$shadow-opacity: 0.3;
+$color-background: #38393f;
+$color-secondary: #06845b;
+
 html {
   min-height: 100%;
 }
@@ -9,7 +14,7 @@ body {
   background: url(/img/mario-bg.png) no-repeat;
   background-size: 100%;
   background-position: bottom;
-  background-color: #38393f;
+  background-color: $color-background;
   min-height: 100%;
 }
 
@@ -28,7 +33,7 @@ input[type="email"]:not(.browser-default):focus:not([readonly]),
 input[type="password"]:not(.browser-default):focus:not([readonly]),
 input.timepicker:not(.browser-default):focus:not([readonly]),
 textarea.materialize-textarea:focus:not([readonly]) {
-  border-color: #06845b;
+  border-color: $color-secondary;
   box-shadow: none;
 }
 
@@ -37,17 +42,29 @@ textarea.materialize-textarea:focus:not([readonly]) + label,
 input[type="email"]:not(.browser-default):focus:not([readonly]) + label,
 input.timepicker:not(.browser-default):focus:not([readonly]) + label,
 input[type="password"]:not(.browser-default):focus:not([readonly]) + label {
-  color: #06845b !important;
+  color: $color-secondary !important;
 }
 
 .btn-form {
-  background-color: #06845b;
+  background-color: $color-secondary;
+}
+
+.btn-form-dark {
+  background-color: $color-background;
+}
+
+.btn-form-dark:hover {
+  background-color: green;
 }
 
 .logo-letter {
-  color: #06845b;
+  color: $color-background;
 }
 
 .brand-logo {
   font-family: "Righteous", cursive;
+}
+
+.nav-sched {
+  background-color: $color-secondary;
 }
