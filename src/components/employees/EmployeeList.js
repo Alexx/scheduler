@@ -11,7 +11,7 @@ const EmployeeList = ({ employees }) => {
     });
   return (
     <Collection>
-      <li class="collection-item">
+      <li className="collection-item">
         <h4>Employees</h4>
       </li>
       {eList}
