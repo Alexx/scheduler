@@ -30,14 +30,15 @@ class CreateEmployee extends Component {
 
   componentDidMount = () => {
     const mStart = document.getElementById("monStart");
-    const monEnd = document.getElementById("monEnd");
     mStart.addEventListener("change", function() {
       _monday = mStart.value;
+      console.log("Monday Start", _monday);
     });
   };
 
   handleSubmit = e => {
     e.preventDefault();
+    console.log("Monday before submit", _monday);
     this.setState({
       monStart: _monday
     });
@@ -84,9 +85,6 @@ class CreateEmployee extends Component {
               <TimePicker
                 style={this.rowStyle}
                 id="monStart"
-                ref={input => {
-                  _monday = input;
-                }}
                 onChange={this.handleChange}
               />
               <label style={this.rowStyle} htmlFor="monStart">

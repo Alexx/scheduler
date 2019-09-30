@@ -1,4 +1,5 @@
 export const createEmployee = employee => {
+  console.log("employee", employee);
   return (dispatch, getState, { getFirebase, getFirestore }) => {
     const firestore = getFirestore();
     const profile = getState().firebase.profile;
