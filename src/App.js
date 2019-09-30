@@ -6,6 +6,7 @@ import EmployeeDetails from "./components/employees/EmployeeDetails";
 import LogIn from "./components/auth/LogIn";
 import SignUp from "./components/auth/SignUp";
 import CreateEmployee from "./components/employees/CreateEmployee";
+import Schedule from "./components/schedule/Schedule";
 
 class App extends Component {
   render() {
@@ -19,6 +20,7 @@ class App extends Component {
             <Route path="/login" component={LogIn} />
             <Route path="/signup" component={SignUp} />
             <Route path="/create" component={CreateEmployee} />
+            <Route path="/schedule" component={Schedule} />
           </Switch>
         </div>
       </BrowserRouter>

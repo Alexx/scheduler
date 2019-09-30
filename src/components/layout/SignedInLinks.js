@@ -7,6 +7,9 @@ const SignedInLinks = props => {
   return (
     <ul className="right">
       <li>
+        <NavLink to="/schedule">Schedules</NavLink>
+      </li>
+      <li>
         <NavLink to="/create">New Employee</NavLink>
       </li>
       <li>

@@ -1,19 +1,21 @@
 import React from "react";
 import EmployeeSummary from "./EmployeeSummary";
 import { Link } from "react-router-dom";
+import { Collection } from "react-materialize";
 
 const EmployeeList = ({ employees }) => {
+  let eList = [];
+  employees &&
+    employees.map(employee => {
+      eList.push(<EmployeeSummary employee={employee} />);
+    });
   return (
-    <div className="project-list section">
-      {employees &&
-        employees.map(employee => {
-          return (
-            <Link to={/employee/ + employee.id} key={employee.id}>
-              <EmployeeSummary employee={employee} />
-            </Link>
-          );
-        })}
-    </div>
+    <Collection>
+      <li class="collection-item">
+        <h4>Employees</h4>
+      </li>
+      {eList}
+    </Collection>
   );
 };
 

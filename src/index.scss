@@ -20,7 +20,7 @@ body {
 
 form {
   padding: 20px;
-  margin-top: 60px;
+  margin-top: 30px;
 }
 
 form button,
@@ -67,4 +67,27 @@ input[type="password"]:not(.browser-default):focus:not([readonly]) + label {
 
 .nav-sched {
   background-color: $color-secondary;
+}
+
+.collection {
+  background-color: #fff;
+}
+
+.employee-list-item {
+  color: #38393f;
+}
+
+.day-row {
+  height: 50px;
+  margin: 0px;
+  padding: 0px;
+}
+
+.timepicker {
+  width: 300px;
+}
+
+.card,
+.collection {
+  margin-top: 30px;
 }

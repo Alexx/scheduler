@@ -13,14 +13,14 @@ class Dashboard extends Component {
     if (!auth.uid) return <Redirect to="/login" />;
 
     return (
-      <div className="dashboard container">
+      <div className="container">
         <div className="row">
-          <div className="col s12 m6">
+          <div className="col s12">
             <EmployeeList employees={employees} />
           </div>
-          <div className="col s12 m5 offset-m1">
+          {/* <div className="col s12 m5 offset-m1">
             <Notifications notifications={notifications} />
-          </div>
+          </div> */}
         </div>
       </div>
     );
@@ -38,7 +38,7 @@ const mapStateToProps = state => {
 export default compose(
   connect(mapStateToProps),
   firestoreConnect([
-    { collection: "employees", orderBy: ["createdAt", "desc"] },
+    { collection: "employees", orderBy: ["firstName", "asc"] },
     { collection: "notifications", limit: 3, orderBy: ["time", "desc"] }
   ])
 )(Dashboard);
