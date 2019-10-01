@@ -40,6 +40,10 @@ class CreateEmployee extends Component {
   };
 
   render() {
+    const deleteStyle = {
+      margin: "0px 0px",
+      padding: "0px 0px"
+    };
     const { auth } = this.props;
 
     if (!auth.uid) return <Redirect to="/login" />;
@@ -65,7 +69,7 @@ class CreateEmployee extends Component {
           <DayForm day="Friday" abrv="fri" onChange={this.handleChange} />
           <DayForm day="Saturday" abrv="sat" onChange={this.handleChange} />
           <DayForm day="Sunday" abrv="sun" onChange={this.handleChange} />
-          <div className="input-field">
+          <div style={{ deleteStyle }}>
             <button className="btn btn-form z-depth-0">Create</button>
           </div>
         </form>
