@@ -54,10 +54,6 @@ input[type="password"]:not(.browser-default):focus:not([readonly]) + label {
   background-color: $color-background;
 }
 
-.btn-form-dark:hover {
-  background-color: green;
-}
-
 .logo-letter {
   color: $color-background;
 }
