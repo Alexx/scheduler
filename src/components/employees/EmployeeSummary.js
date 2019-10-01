@@ -9,7 +9,7 @@ const EmployeeSummary = ({ employee }) => {
       <Link to={/employee/ + employee.id} key={employee.id}>
         <i className="material-icons circle">account_circle</i>
         <div className="employee-list-item">
-          <span className="title">
+          <span>
             {employee.firstName} {employee.lastName}
           </span>
           <p>{moment(employee.createdAt.toDate().toString()).calendar()}</p>
