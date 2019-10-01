@@ -7,6 +7,7 @@ import moment from "moment";
 
 const ProjectDetails = props => {
   const { employee, auth } = props;
+  console.log("employee", employee);
 
   if (!auth.uid) return <Redirect to="/login" />;
 
@@ -15,15 +16,53 @@ const ProjectDetails = props => {
       <div className="container section employee-details">
         <div className="card z-depth-0">
           <div className="card-content">
-            <span className="card-title">
+            <h1 className="card-title">
               {employee.firstName} {employee.lastName}
-            </span>
-            <p>{employee.content}</p>
+            </h1>
+            <p className="ava-text">Availability</p>
+            <p>
+              {`Monday:
+              ${moment(employee.monStart, "HH:mm").format("hh:mm a")} -
+              ${moment(employee.monEnd, "HH:mm").format("hh:mm a")}`}
+            </p>
+
+            <p>
+              {`Tuesday:
+              ${moment(employee.tueStart, "HH:mm").format("hh:mm a")} -
+              ${moment(employee.tueEnd, "HH:mm").format("hh:mm a")}`}
+            </p>
+
+            <p>
+              {`Wednesday:
+              ${moment(employee.wedStart, "HH:mm").format("hh:mm a")} -
+              ${moment(employee.wedEnd, "HH:mm").format("hh:mm a")}`}
+            </p>
+
+            <p>
+              {`Thursday:
+              ${moment(employee.thuStart, "HH:mm").format("hh:mm a")} -
+              ${moment(employee.thuEnd, "HH:mm").format("hh:mm a")}`}
+            </p>
+
+            <p>
+              {`Friday:
+              ${moment(employee.friStart, "HH:mm").format("hh:mm a")} -
+              ${moment(employee.friEnd, "HH:mm").format("hh:mm a")}`}
+            </p>
+
+            <p>
+              {`Saturday:
+              ${moment(employee.satStart, "HH:mm").format("hh:mm a")} -
+              ${moment(employee.satEnd, "HH:mm").format("hh:mm a")}`}
+            </p>
+
+            <p>
+              {`Sunday:
+              ${moment(employee.sunStart, "HH:mm").format("hh:mm a")} -
+              ${moment(employee.sunEnd, "HH:mm").format("hh:mm a")}`}
+            </p>
           </div>
           <div className="card-action grey lighten-4 grey-text">
-            <div>
-              Posted by {employee.authorFirstName} {employee.authorLastName}
-            </div>
             <div>
               {moment(employee.createdAt.toDate().toString()).calendar()}
             </div>
