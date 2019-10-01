@@ -38,7 +38,7 @@ class CreateShift extends Component {
       employees.map(employee => {
         eList.push(
           <option
-            value={employee}
+            value={employee.id}
             key={employee.id}
           >{`${employee.firstName} ${employee.lastName}`}</option>
         );
@@ -63,7 +63,11 @@ class CreateShift extends Component {
             </Col>
           </Row>
           <Row>
-            <Select id="employee" value="" onChange={this.handleChange}>
+            <Select
+              id="employee"
+              value={this.state.employee}
+              onChange={this.handleChange}
+            >
               <option value="" disabled>
                 Select Employee
               </option>
