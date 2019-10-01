@@ -3,8 +3,7 @@ import { Row, Col } from "react-materialize";
 
 function DayForm(props) {
   const rowStyle = {
-    height: "50px",
-    margin: "16px 0",
+    margin: "0px",
     padding: "0px"
   };
   return (
@@ -26,7 +25,9 @@ function DayForm(props) {
       </Col>
       <Col style={rowStyle} s={12} m={5} className="input-field">
         <input type="time" id={`${props.abrv}End`} onChange={props.onChange} />
-        <label style={rowStyle} htmlFor={`${props.abrv}End`}></label>
+        <label style={rowStyle} htmlFor={`${props.abrv}End`}>
+          End
+        </label>
       </Col>
     </Row>
   );

@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { firestoreConnect } from "react-redux-firebase";
 import { compose } from "redux";
-import { Redirect } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
 import moment from "moment";
 
 const ProjectDetails = props => {
@@ -16,9 +16,9 @@ const ProjectDetails = props => {
       <div className="container section employee-details">
         <div className="card z-depth-0">
           <div className="card-content">
-            <h1 className="card-title">
+            <span className="card-title">
               {employee.firstName} {employee.lastName}
-            </h1>
+            </span>
             <p className="ava-text">Availability</p>
             <p>
               {`Monday:
@@ -66,6 +66,11 @@ const ProjectDetails = props => {
             <div>
               {moment(employee.createdAt.toDate().toString()).calendar()}
             </div>
+            <Link to="/">
+              <button className="waves-effect waves-light btn btn-form z-depth-0">
+                Back
+              </button>
+            </Link>
           </div>
         </div>
       </div>
