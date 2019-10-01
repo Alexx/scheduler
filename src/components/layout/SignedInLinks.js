@@ -11,7 +11,10 @@ const SignedInLinks = props => {
           <NavLink to="/schedule">Schedules</NavLink>
         </li>
         <li>
-          <NavLink to="/create_employee">New Employee</NavLink>
+          <NavLink to="/create_employee">Create Employee</NavLink>
+        </li>
+        <li>
+          <NavLink to="/create_shift">Create Shift</NavLink>
         </li>
         <li>
           <a onClick={props.signOut}> Log Out</a>
@@ -26,7 +29,6 @@ const SignedInLinks = props => {
         </li>
       </ul>
     </div>
-  
   );
 };
 
