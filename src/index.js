@@ -20,7 +20,8 @@ const store = createStore(
       useFirestoreForProfile: true,
       userProfile: "users",
       attachAuthIsReady: true
-    })
+    }),
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
   )
 );
 
