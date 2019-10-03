@@ -5,7 +5,7 @@ import { Redirect } from "react-router-dom";
 import { Row, Col, Select } from "react-materialize";
 import { firestoreConnect } from "react-redux-firebase";
 import { compose } from "redux";
-
+import moment from "moment";
 class CreateShift extends Component {
   state = {
     start: "",
@@ -15,7 +15,6 @@ class CreateShift extends Component {
   };
 
   handleChange = e => {
-    console.log(this.state);
     this.setState({
       [e.target.id]: e.target.value
     });
@@ -27,6 +26,11 @@ class CreateShift extends Component {
     this.props.history.push("/schedule");
   };
 
+  checkAvailability = avaStart => {
+    let shiftStart = moment(this.state.start).format("HH:mm");
+    console.log(avaStart < shiftStart);
+  };
+
   render() {
     const { auth, employees } = this.props;
 
@@ -35,12 +39,14 @@ class CreateShift extends Component {
     let eList = [];
     employees &&
       employees.map(employee => {
-        eList.push(
-          <option
-            value={`${employee.firstName} ${employee.lastName}`}
-            key={employee.id}
-          >{`${employee.firstName} ${employee.lastName}`}</option>
-        );
+        if (this.checkAvailability(employee.monStart)) {
+          eList.push(
+            <option
+              value={`${employee.firstName} ${employee.lastName}`}
+              key={employee.id}
+            >{`${employee.firstName} ${employee.lastName}`}</option>
+          );
+        }
       });
 
     const dateTimeStyle = {
