@@ -7,7 +7,6 @@ import moment from "moment";
 
 const ProjectDetails = props => {
   const { employee, auth } = props;
-  console.log("employee", employee);
 
   if (!auth.uid) return <Redirect to="/login" />;
 

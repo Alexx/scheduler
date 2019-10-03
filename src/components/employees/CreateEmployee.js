@@ -26,7 +26,6 @@ class CreateEmployee extends Component {
   };
 
   handleChange = e => {
-    console.log(this.state);
     this.setState({
       [e.target.id]: e.target.value
     });

@@ -5,6 +5,7 @@ import { Container, Card } from "react-materialize";
 import { connect } from "react-redux";
 import { firestoreConnect } from "react-redux-firebase";
 import { compose } from "redux";
+import Day from "./Day";
 
 import "react-big-calendar/lib/css/react-big-calendar.css";
 
@@ -20,10 +21,7 @@ class Schedule extends Component {
         shift.start = new Date(shift.start);
         shift.end = new Date(shift.end);
         events.push(shift);
-        console.log(shift);
       });
-
-    console.log(events);
 
     return (
       <Container>

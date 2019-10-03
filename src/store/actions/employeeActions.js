@@ -19,8 +19,6 @@ export const createEmployee = employee => {
 };
 
 export const deleteEmployee = employeeId => {
-  console.log(employeeId);
-
   return (dispatch, getState, { getFirestore }) => {
     const firestore = getFirestore();
 
