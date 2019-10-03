@@ -8,9 +8,9 @@ import { compose } from "redux";
 
 class CreateShift extends Component {
   state = {
-    date: "",
-    startShift: "",
-    endShift: "",
+    start: "",
+    end: "",
+    title: "",
     employee: ""
   };
 
@@ -31,41 +31,50 @@ class CreateShift extends Component {
     const { auth, employees } = this.props;
 
     if (!auth.uid) return <Redirect to="/login" />;
-    console.log("Employees", employees);
 
     let eList = [];
     employees &&
       employees.map(employee => {
         eList.push(
           <option
-            value={employee.id}
+            value={`${employee.firstName} ${employee.lastName}`}
             key={employee.id}
           >{`${employee.firstName} ${employee.lastName}`}</option>
         );
       });
+
+    const dateTimeStyle = {
+      marginTop: "30px"
+    };
 
     return (
       <div className="container">
         <form className="white" onSubmit={this.handleSubmit}>
           <h5 className="grey-text text-darken-3">Create a New Shift</h5>
           <Row>
-            <Col s={12} m={4} className="input-field">
-              <input type="date" id="date" onChange={this.handleChange} />
-              <label htmlFor="date">Start Shift</label>
-            </Col>
-            <Col s={12} m={4} className="input-field">
-              <input type="time" id="startShift" onChange={this.handleChange} />
+            <Col s={12} m={6} className="input-field">
+              <input
+                style={dateTimeStyle}
+                type="datetime-local"
+                id="start"
+                onChange={this.handleChange}
+              />
               <label htmlFor="startShift">Start Shift</label>
             </Col>
-            <Col s={12} m={4} className="input-field">
-              <input type="time" id="endShift" onChange={this.handleChange} />
+            <Col s={12} m={6} className="input-field">
+              <input
+                style={dateTimeStyle}
+                type="datetime-local"
+                id="end"
+                onChange={this.handleChange}
+              />
               <label htmlFor="endShift">End Shift</label>
             </Col>
           </Row>
           <Row>
             <Select
-              id="employee"
-              value={this.state.employee}
+              id="title"
+              value={this.state.title}
               onChange={this.handleChange}
             >
               <option value="" disabled>
@@ -101,8 +110,5 @@ export default compose(
     mapStateToProps,
     mapDispatchToProps
   ),
-  firestoreConnect([
-    { collection: "employees", orderBy: ["firstName", "asc"] },
-    { collection: "notifications", limit: 3, orderBy: ["time", "desc"] }
-  ])
+  firestoreConnect([{ collection: "employees", orderBy: ["firstName", "asc"] }])
 )(CreateShift);

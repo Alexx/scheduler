@@ -1,7 +1,6 @@
 export const createShift = shift => {
-  return (dispatch, getState, { getFirebase, getFirestore }) => {
+  return (dispatch, getState, { getFirestore }) => {
     const firestore = getFirestore();
-    const profile = getState().firebase.profile;
     const managerId = getState().firebase.auth.uid;
     firestore
       .collection("shifts")
