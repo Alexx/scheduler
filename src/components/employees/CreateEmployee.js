@@ -4,7 +4,6 @@ import { createEmployee } from "../../store/actions/employeeActions";
 import { Redirect } from "react-router-dom";
 import { Row, Col } from "react-materialize";
 import DayForm from "./DayForm";
-import moment from "moment";
 
 class CreateEmployee extends Component {
   state = {
