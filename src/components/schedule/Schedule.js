@@ -27,7 +27,7 @@ class Schedule extends Component {
 
     return (
       <Container>
-        <Card style={{ height: "90vh", marginTop: "20px" }}>
+        <Card style={{ height: "100vh", marginTop: "20px" }}>
           <Calendar
             localizer={localizer}
             defaultDate={new Date()}

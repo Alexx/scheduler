@@ -84,7 +84,9 @@ class CreateShift extends Component {
             </Select>
           </Row>
           <div className="input-field">
-            <button className="btn btn-form z-depth-0">Create</button>
+            <button className="waves-effect waves-light btn btn-form z-depth-0">
+              Create
+            </button>
           </div>
         </form>
       </div>
