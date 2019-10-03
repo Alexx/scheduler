@@ -1,7 +1,7 @@
 import React from "react";
 import moment from "moment";
 import { deleteEmployee } from "../../store/actions/employeeActions";
-import { CollectionItem } from "react-materialize";
+import { CollectionItem, Modal, Button } from "react-materialize";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { tsConstructorType } from "@babel/types";
@@ -20,14 +20,30 @@ const EmployeeSummary = props => {
           </p>
         </div>
       </Link>
-      <div className="valign-wrapper">
-        <button
-          className="waves-effect waves-light btn btn-form z-depth-0 employee-btn"
-          onClick={() => props.deleteEmployee(props.employee.id)}
-        >
-          Delete
-        </button>
-      </div>
+
+      <Modal
+        header="Delete"
+        trigger={
+          <div className="valign-wrapper">
+            <Button className="waves-effect waves-light btn btn-form z-depth-0 employee-btn">
+              Delete
+            </Button>
+          </div>
+        }
+      >
+        <p>
+          Are you sure you want to <strong>DELETE</strong>{" "}
+          {props.employee.firstName} {props.employee.lastName}?
+        </p>
+        <div className="valign-wrapper">
+          <button
+            className="waves-effect waves-light btn btn-form z-depth-0 employee-btn"
+            onClick={() => props.deleteEmployee(props.employee.id)}
+          >
+            Delete
+          </button>
+        </div>
+      </Modal>
     </CollectionItem>
   );
 };
