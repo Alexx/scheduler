@@ -17,3 +17,22 @@ export const createEmployee = employee => {
       });
   };
 };
+
+export const deleteEmployee = employeeId => {
+  console.log(employeeId);
+
+  return (dispatch, getState, { getFirestore }) => {
+    const firestore = getFirestore();
+
+    firestore
+      .collection("employees")
+      .doc(employeeId)
+      .delete()
+      .then(() => {
+        dispatch({ type: "DELETE_EMPLOYEE", employeeId });
+      })
+      .catch(err => {
+        dispatch({ type: "DELETE_EMPLOYEE_ERROR", err });
+      });
+  };
+};
