@@ -35,6 +35,7 @@ class CreateShift extends Component {
 
     this.props.employees &&
       this.props.employees.map(employee => {
+        console.log(employee.firstName);
         if (this.checkAvailability(employee.availability)) {
           newEmployeeList.push(
             <option
@@ -54,11 +55,58 @@ class CreateShift extends Component {
 
   checkAvailability = availability => {
     let shiftStart = moment(this.state.start).format("HHmm");
-    let avaStart = availability.monStart;
-    console.log("avaStart:", avaStart);
-    console.log("shiftStart:", shiftStart);
-    console.log(`${avaStart} <= ${shiftStart}`, avaStart <= shiftStart);
-    return avaStart <= shiftStart;
+    let shiftEnd = moment(this.state.end).format("HHmm");
+
+    switch (moment(this.state.start).isoWeekday()) {
+      case 1:
+        console.log(
+          `Case 1: ${moment(availability.monStart, "HH:mm").format(
+            "HHmm"
+          )} <= ${shiftStart} && ${moment(availability.monEnd, "HH:mm").format(
+            "HHmm"
+          )} >= ${shiftEnd}`
+        );
+        console.log(
+          moment(availability.monStart, "HH:mm").format("HHmm") <= shiftStart &&
+            moment(availability.monEnd, "HH:mm").format("HHmm") >= shiftEnd
+        );
+        return (
+          moment(availability.monStart, "HH:mm").format("HHmm") <= shiftStart &&
+          moment(availability.monEnd, "HH:mm").format("HHmm") >= shiftEnd
+        );
+      case 2:
+        return (
+          moment(availability.tueStart, "HH:mm").format("HHmm") <= shiftStart &&
+          moment(availability.tueEnd, "HH:mm").format("HHmm") >= shiftEnd
+        );
+      case 3:
+        return (
+          moment(availability.wedStart, "HH:mm").format("HHmm") <= shiftStart &&
+          moment(availability.wedEnd, "HH:mm").format("HHmm") >= shiftEnd
+        );
+      case 4:
+        return (
+          moment(availability.thuStart, "HH:mm").format("HHmm") <= shiftStart &&
+          moment(availability.thuEnd, "HH:mm").format("HHmm") >= shiftEnd
+        );
+      case 5:
+        return (
+          moment(availability.friStart, "HH:mm").format("HHmm") <= shiftStart &&
+          moment(availability.friEnd, "HH:mm").format("HHmm") >= shiftEnd
+        );
+      case 6:
+        return (
+          moment(availability.satStart, "HH:mm").format("HHmm") <= shiftStart &&
+          moment(availability.satEnd, "HH:mm").format("HHmm") >= shiftEnd
+        );
+      case 7:
+        return (
+          moment(availability.sunStart, "HH:mm").format("HHmm") <= shiftStart &&
+          moment(availability.sunEnd, "HH:mm").format("HHmm") >= shiftEnd
+        );
+      default:
+        return false;
+    }
   };
 
   render() {
