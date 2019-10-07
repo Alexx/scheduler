@@ -5,43 +5,66 @@ import { Redirect } from "react-router-dom";
 import { Row, Col, Select } from "react-materialize";
 import { firestoreConnect } from "react-redux-firebase";
 import { compose } from "redux";
+import moment from "moment";
 
 class CreateShift extends Component {
   state = {
-    start: "",
-    end: "",
-    title: "",
-    employee: ""
+    employee: {
+      start: null,
+      end: null,
+      title: null,
+      employee: null
+    },
+    employeeList: []
   };
 
   handleChange = e => {
-    console.log(this.state);
-    this.setState({
-      [e.target.id]: e.target.value
-    });
+    this.setState({ [e.target.id]: e.target.value }, () =>
+      this.updateEmployees()
+    );
   };
 
   handleSubmit = e => {
     e.preventDefault();
-    this.props.createShift(this.state);
+    this.props.createShift(this.state.employee);
     this.props.history.push("/schedule");
   };
 
+  updateEmployees = () => {
+    let newEmployeeList = [];
+
+    this.props.employees &&
+      this.props.employees.map(employee => {
+        if (this.checkAvailability(employee.availability)) {
+          newEmployeeList.push(
+            <option
+              value={`${employee.firstName} ${employee.lastName}`}
+              key={employee.id}
+            >
+              {`${employee.firstName} ${employee.lastName}`}
+            </option>
+          );
+        }
+      });
+
+    this.setState({
+      employeeList: newEmployeeList
+    });
+  };
+
+  checkAvailability = availability => {
+    let shiftStart = moment(this.state.start).format("HHmm");
+    let avaStart = availability.monStart;
+    console.log("avaStart:", avaStart);
+    console.log("shiftStart:", shiftStart);
+    console.log(`${avaStart} <= ${shiftStart}`, avaStart <= shiftStart);
+    return avaStart <= shiftStart;
+  };
+
   render() {
-    const { auth, employees } = this.props;
+    const { auth } = this.props;
 
     if (!auth.uid) return <Redirect to="/login" />;
-
-    let eList = [];
-    employees &&
-      employees.map(employee => {
-        eList.push(
-          <option
-            value={`${employee.firstName} ${employee.lastName}`}
-            key={employee.id}
-          >{`${employee.firstName} ${employee.lastName}`}</option>
-        );
-      });
 
     const dateTimeStyle = {
       marginTop: "30px"
@@ -80,7 +103,7 @@ class CreateShift extends Component {
               <option value="" disabled>
                 Select Employee
               </option>
-              {eList}
+              {this.state.employeeList}
             </Select>
           </Row>
           <div className="input-field">

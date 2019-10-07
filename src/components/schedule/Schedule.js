@@ -5,7 +5,7 @@ import { Container, Card } from "react-materialize";
 import { connect } from "react-redux";
 import { firestoreConnect } from "react-redux-firebase";
 import { compose } from "redux";
-import Day from "./Day";
+import { Redirect } from "react-router-dom";
 
 import "react-big-calendar/lib/css/react-big-calendar.css";
 
@@ -13,7 +13,9 @@ const localizer = momentLocalizer(moment);
 
 class Schedule extends Component {
   render() {
-    const { shifts } = this.props;
+    const { shifts, auth } = this.props;
+
+    if (!auth.uid) return <Redirect to="/login" />;
 
     let events = [];
     shifts &&

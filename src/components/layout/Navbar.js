@@ -16,7 +16,8 @@ const Navbar = props => {
     <nav className="nav-wrapper nav-sched">
       <div className="container">
         <Link to="/" className="brand-logo left">
-          <span className="logo-letter">S</span>cheduler
+          <span className="title-first">Smart</span>
+          <span className="title-second">Scheduler</span>
         </Link>
         {links}
       </div>

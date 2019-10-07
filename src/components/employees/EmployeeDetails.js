@@ -21,44 +21,72 @@ const ProjectDetails = props => {
             <p className="ava-text">Availability</p>
             <p>
               {`Monday:
-              ${moment(employee.monStart, "HH:mm").format("hh:mm a")} -
-              ${moment(employee.monEnd, "HH:mm").format("hh:mm a")}`}
+              ${moment(employee.availability.monStart, "HH:mm").format(
+                "hh:mm a"
+              )} -
+              ${moment(employee.availability.monEnd, "HH:mm").format(
+                "hh:mm a"
+              )}`}
             </p>
 
             <p>
               {`Tuesday:
-              ${moment(employee.tueStart, "HH:mm").format("hh:mm a")} -
-              ${moment(employee.tueEnd, "HH:mm").format("hh:mm a")}`}
+              ${moment(employee.availability.tueStart, "HH:mm").format(
+                "hh:mm a"
+              )} -
+              ${moment(employee.availability.tueEnd, "HH:mm").format(
+                "hh:mm a"
+              )}`}
             </p>
 
             <p>
               {`Wednesday:
-              ${moment(employee.wedStart, "HH:mm").format("hh:mm a")} -
-              ${moment(employee.wedEnd, "HH:mm").format("hh:mm a")}`}
+              ${moment(employee.availability.wedStart, "HH:mm").format(
+                "hh:mm a"
+              )} -
+              ${moment(employee.availability.wedEnd, "HH:mm").format(
+                "hh:mm a"
+              )}`}
             </p>
 
             <p>
               {`Thursday:
-              ${moment(employee.thuStart, "HH:mm").format("hh:mm a")} -
-              ${moment(employee.thuEnd, "HH:mm").format("hh:mm a")}`}
+              ${moment(employee.availability.thuStart, "HH:mm").format(
+                "hh:mm a"
+              )} -
+              ${moment(employee.availability.thuEnd, "HH:mm").format(
+                "hh:mm a"
+              )}`}
             </p>
 
             <p>
               {`Friday:
-              ${moment(employee.friStart, "HH:mm").format("hh:mm a")} -
-              ${moment(employee.friEnd, "HH:mm").format("hh:mm a")}`}
+              ${moment(employee.availability.friStart, "HH:mm").format(
+                "hh:mm a"
+              )} -
+              ${moment(employee.availability.friEnd, "HH:mm").format(
+                "hh:mm a"
+              )}`}
             </p>
 
             <p>
               {`Saturday:
-              ${moment(employee.satStart, "HH:mm").format("hh:mm a")} -
-              ${moment(employee.satEnd, "HH:mm").format("hh:mm a")}`}
+              ${moment(employee.availability.satStart, "HH:mm").format(
+                "hh:mm a"
+              )} -
+              ${moment(employee.availability.satEnd, "HH:mm").format(
+                "hh:mm a"
+              )}`}
             </p>
 
             <p>
               {`Sunday:
-              ${moment(employee.sunStart, "HH:mm").format("hh:mm a")} -
-              ${moment(employee.sunEnd, "HH:mm").format("hh:mm a")}`}
+              ${moment(employee.availability.sunStart, "HH:mm").format(
+                "hh:mm a"
+              )} -
+              ${moment(employee.availability.sunEnd, "HH:mm").format(
+                "hh:mm a"
+              )}`}
             </p>
           </div>
           <div className="card-action grey lighten-4 grey-text">
