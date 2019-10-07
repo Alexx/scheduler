@@ -10,34 +10,18 @@ import moment from "moment";
 class CreateShift extends Component {
   state = {
     employee: {
-      start: "",
-      end: "",
-      title: "",
-      employee: ""
+      start: null,
+      end: null,
+      title: null,
+      employee: null
     },
     employeeList: []
   };
 
   handleChange = e => {
-    let newEmployeeList = this.state.employeeList;
-
-    this.props.employees &&
-      this.props.employees.map(employee => {
-        console.log("I ran.");
-        console.log("Check", this.checkAvailability(employee.monStart));
-        if (this.checkAvailability(employee.monStart)) {
-          newEmployeeList.push(
-            <option
-              value={`${employee.firstName} ${employee.lastName}`}
-              key={employee.id}
-            >{`${employee.firstName} ${employee.lastName}`}</option>
-          );
-        }
-      });
-    this.setState({
-      [e.target.id]: e.target.value,
-      employeeList: newEmployeeList
-    });
+    this.setState({ [e.target.id]: e.target.value }, () =>
+      this.updateEmployees()
+    );
   };
 
   handleSubmit = e => {
@@ -46,13 +30,39 @@ class CreateShift extends Component {
     this.props.history.push("/schedule");
   };
 
-  checkAvailability = avaStart => {
-    let shiftStart = moment(this.state.start).format("HH:mm");
-    return avaStart < shiftStart;
+  updateEmployees = () => {
+    let newEmployeeList = [];
+
+    this.props.employees &&
+      this.props.employees.map(employee => {
+        if (this.checkAvailability(employee.availability)) {
+          newEmployeeList.push(
+            <option
+              value={`${employee.firstName} ${employee.lastName}`}
+              key={employee.id}
+            >
+              {`${employee.firstName} ${employee.lastName}`}
+            </option>
+          );
+        }
+      });
+
+    this.setState({
+      employeeList: newEmployeeList
+    });
+  };
+
+  checkAvailability = availability => {
+    let shiftStart = moment(this.state.start).format("HHmm");
+    let avaStart = availability.monStart;
+    console.log("avaStart:", avaStart);
+    console.log("shiftStart:", shiftStart);
+    console.log(`${avaStart} <= ${shiftStart}`, avaStart <= shiftStart);
+    return avaStart <= shiftStart;
   };
 
   render() {
-    const { auth, employees } = this.props;
+    const { auth } = this.props;
 
     if (!auth.uid) return <Redirect to="/login" />;
 

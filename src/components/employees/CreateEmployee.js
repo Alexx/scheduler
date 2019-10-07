@@ -9,25 +9,35 @@ class CreateEmployee extends Component {
   state = {
     firstName: "",
     lastName: "",
-    monStart: "",
-    monEnd: "",
-    tueStart: "",
-    tueEnd: "",
-    wedStart: "",
-    wedEnd: "",
-    thuStart: "",
-    thuEnd: "",
-    friStart: "",
-    friEnd: "",
-    satStart: "",
-    satEnd: "",
-    sunStart: "",
-    sunEnd: ""
+    availability: {
+      monStart: "",
+      monEnd: "",
+      tueStart: "",
+      tueEnd: "",
+      wedStart: "",
+      wedEnd: "",
+      thuStart: "",
+      thuEnd: "",
+      friStart: "",
+      friEnd: "",
+      satStart: "",
+      satEnd: "",
+      sunStart: "",
+      sunEnd: ""
+    }
   };
 
   handleChange = e => {
     this.setState({
       [e.target.id]: e.target.value
+    });
+  };
+
+  handleAvailabilityChange = e => {
+    const newAvailability = { ...this.state.availability };
+    newAvailability[e.target.id] = e.target.value;
+    this.setState({
+      availability: newAvailability
     });
   };
 
@@ -60,13 +70,41 @@ class CreateEmployee extends Component {
               <label htmlFor="lastName">Last Name</label>
             </Col>
           </Row>
-          <DayForm day="Monday" abrv="mon" onChange={this.handleChange} />
-          <DayForm day="Tuesday" abrv="tue" onChange={this.handleChange} />
-          <DayForm day="Wednesday" abrv="wed" onChange={this.handleChange} />
-          <DayForm day="Thursday" abrv="thu" onChange={this.handleChange} />
-          <DayForm day="Friday" abrv="fri" onChange={this.handleChange} />
-          <DayForm day="Saturday" abrv="sat" onChange={this.handleChange} />
-          <DayForm day="Sunday" abrv="sun" onChange={this.handleChange} />
+          <DayForm
+            day="Monday"
+            abrv="mon"
+            onChange={this.handleAvailabilityChange}
+          />
+          <DayForm
+            day="Tuesday"
+            abrv="tue"
+            onChange={this.handleAvailabilityChange}
+          />
+          <DayForm
+            day="Wednesday"
+            abrv="wed"
+            onChange={this.handleAvailabilityChange}
+          />
+          <DayForm
+            day="Thursday"
+            abrv="thu"
+            onChange={this.handleAvailabilityChange}
+          />
+          <DayForm
+            day="Friday"
+            abrv="fri"
+            onChange={this.handleAvailabilityChange}
+          />
+          <DayForm
+            day="Saturday"
+            abrv="sat"
+            onChange={this.handleAvailabilityChange}
+          />
+          <DayForm
+            day="Sunday"
+            abrv="sun"
+            onChange={this.handleAvailabilityChange}
+          />
           <div style={{ deleteStyle }}>
             <button className="btn btn-form z-depth-0">Create</button>
           </div>
