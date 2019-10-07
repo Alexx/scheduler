@@ -8,6 +8,7 @@ import SignUp from "./components/auth/SignUp";
 import CreateEmployee from "./components/employees/CreateEmployee";
 import Schedule from "./components/schedule/Schedule";
 import CreateShift from "./components/schedule/CreateShift";
+import Landing from "./components/layout/Landing";
 
 class App extends Component {
   render() {
@@ -18,6 +19,7 @@ class App extends Component {
           <Switch>
             <Route exact path="/" component={Dashboard} />
             <Route path="/employee/:id" component={EmployeeDetails} />
+            <Route path="/landing" component={Landing} />
             <Route path="/login" component={LogIn} />
             <Route path="/signup" component={SignUp} />
             <Route path="/create_employee" component={CreateEmployee} />
