@@ -6,41 +6,27 @@ import { Row, Col, Select } from "react-materialize";
 import { firestoreConnect } from "react-redux-firebase";
 import { compose } from "redux";
 import moment from "moment";
+
 class CreateShift extends Component {
   state = {
-    start: "",
-    end: "",
-    title: "",
-    employee: ""
+    employee: {
+      start: "",
+      end: "",
+      title: "",
+      employee: ""
+    },
+    employeeList: []
   };
 
   handleChange = e => {
-    this.setState({
-      [e.target.id]: e.target.value
-    });
-  };
+    let newEmployeeList = this.state.employeeList;
 
-  handleSubmit = e => {
-    e.preventDefault();
-    this.props.createShift(this.state);
-    this.props.history.push("/schedule");
-  };
-
-  checkAvailability = avaStart => {
-    let shiftStart = moment(this.state.start).format("HH:mm");
-    console.log(avaStart < shiftStart);
-  };
-
-  render() {
-    const { auth, employees } = this.props;
-
-    if (!auth.uid) return <Redirect to="/login" />;
-
-    let eList = [];
-    employees &&
-      employees.map(employee => {
+    this.props.employees &&
+      this.props.employees.map(employee => {
+        console.log("I ran.");
+        console.log("Check", this.checkAvailability(employee.monStart));
         if (this.checkAvailability(employee.monStart)) {
-          eList.push(
+          newEmployeeList.push(
             <option
               value={`${employee.firstName} ${employee.lastName}`}
               key={employee.id}
@@ -48,6 +34,27 @@ class CreateShift extends Component {
           );
         }
       });
+    this.setState({
+      [e.target.id]: e.target.value,
+      employeeList: newEmployeeList
+    });
+  };
+
+  handleSubmit = e => {
+    e.preventDefault();
+    this.props.createShift(this.state.employee);
+    this.props.history.push("/schedule");
+  };
+
+  checkAvailability = avaStart => {
+    let shiftStart = moment(this.state.start).format("HH:mm");
+    return avaStart < shiftStart;
+  };
+
+  render() {
+    const { auth, employees } = this.props;
+
+    if (!auth.uid) return <Redirect to="/login" />;
 
     const dateTimeStyle = {
       marginTop: "30px"
@@ -86,7 +93,7 @@ class CreateShift extends Component {
               <option value="" disabled>
                 Select Employee
               </option>
-              {eList}
+              {this.state.employeeList}
             </Select>
           </Row>
           <div className="input-field">
