@@ -13,14 +13,19 @@ class CreateShift extends Component {
       start: null,
       end: null,
       title: null,
-      employee: null
+      employeeId: null
     },
     employeeList: []
   };
 
   handleChange = e => {
-    this.setState({ [e.target.id]: e.target.value }, () =>
-      this.updateEmployees()
+    const newEmployee = { ...this.state.employee };
+    newEmployee[e.target.id] = e.target.value;
+    this.setState(
+      {
+        employee: newEmployee
+      },
+      () => this.updateEmployees()
     );
   };
 
@@ -54,10 +59,10 @@ class CreateShift extends Component {
   };
 
   checkAvailability = availability => {
-    let shiftStart = moment(this.state.start).format("HHmm");
-    let shiftEnd = moment(this.state.end).format("HHmm");
+    let shiftStart = moment(this.state.employee.start).format("HHmm");
+    let shiftEnd = moment(this.state.employee.end).format("HHmm");
 
-    switch (moment(this.state.start).isoWeekday()) {
+    switch (moment(this.state.employee.start).isoWeekday()) {
       case 1:
         console.log(
           `Case 1: ${moment(availability.monStart, "HH:mm").format(
