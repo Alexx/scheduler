@@ -30,7 +30,31 @@ const mapStateToProps = state => {
   };
 };
 
+console.log("my props:", this);
+
+// export default compose(
+//   connect(mapStateToProps),
+//   firestoreConnect((props) => {
+//     [
+//       {
+//         collection: "employees",
+//         orderBy: ["firstName", "asc"],
+//         where: ["managerId", "==", props.auth.uid]
+//       }
+//     }
+//   ])
+// )(Dashboard);
+
 export default compose(
   connect(mapStateToProps),
-  firestoreConnect([{ collection: "employees", orderBy: ["firstName", "asc"] }])
+  firestoreConnect(props => {
+    if (!props.auth.uid) return [];
+    return [
+      {
+        collection: "employees",
+        orderBy: ["firstName", "asc"],
+        where: ["managerId", "==", props.auth.uid]
+      }
+    ];
+  })
 )(Dashboard);
