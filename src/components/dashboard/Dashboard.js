@@ -32,5 +32,14 @@ const mapStateToProps = state => {
 
 export default compose(
   connect(mapStateToProps),
-  firestoreConnect([{ collection: "employees", orderBy: ["firstName", "asc"] }])
+  firestoreConnect(props => {
+    if (!props.auth.uid) return [];
+    return [
+      {
+        collection: "employees",
+        orderBy: ["firstName", "asc"],
+        where: ["managerId", "==", props.auth.uid]
+      }
+    ];
+  })
 )(Dashboard);
