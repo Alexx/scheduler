@@ -56,7 +56,7 @@ export default compose(
       {
         collection: "shifts",
         orderBy: ["start", "asc"],
-        where: [["userId", "==", props.auth.uid]]
+        where: [["managerId", "==", props.auth.uid]]
       }
     ];
   })

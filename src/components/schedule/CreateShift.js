@@ -40,7 +40,6 @@ class CreateShift extends Component {
 
     this.props.employees &&
       this.props.employees.map(employee => {
-        console.log(employee.firstName);
         if (this.checkAvailability(employee.availability)) {
           newEmployeeList.push(
             <option
@@ -64,17 +63,6 @@ class CreateShift extends Component {
 
     switch (moment(this.state.employee.start).isoWeekday()) {
       case 1:
-        console.log(
-          `Case 1: ${moment(availability.monStart, "HH:mm").format(
-            "HHmm"
-          )} <= ${shiftStart} && ${moment(availability.monEnd, "HH:mm").format(
-            "HHmm"
-          )} >= ${shiftEnd}`
-        );
-        console.log(
-          moment(availability.monStart, "HH:mm").format("HHmm") <= shiftStart &&
-            moment(availability.monEnd, "HH:mm").format("HHmm") >= shiftEnd
-        );
         return (
           moment(availability.monStart, "HH:mm").format("HHmm") <= shiftStart &&
           moment(availability.monEnd, "HH:mm").format("HHmm") >= shiftEnd
