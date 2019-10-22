@@ -172,9 +172,15 @@ const mapDispatchToProps = dispatch => {
 };
 
 export default compose(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  ),
-  firestoreConnect([{ collection: "employees", orderBy: ["firstName", "asc"] }])
+  connect(mapStateToProps),
+  firestoreConnect(props => {
+    if (!props.auth.uid) return [];
+    return [
+      {
+        collection: "employees",
+        orderBy: ["name", "asc"],
+        where: [["managerId", "==", props.auth.uid]]
+      }
+    ];
+  })
 )(CreateShift);
