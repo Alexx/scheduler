@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.css": "/static/css/main.831eea4d.chunk.css",
+    "main.js": "/static/js/main.3dc04ed8.chunk.js",
+    "main.js.map": "/static/js/main.3dc04ed8.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.e6af5a35.js",
+    "runtime-main.js.map": "/static/js/runtime-main.e6af5a35.js.map",
+    "static/css/2.25b83785.chunk.css": "/static/css/2.25b83785.chunk.css",
+    "static/js/2.d3ade105.chunk.js": "/static/js/2.d3ade105.chunk.js",
+    "static/js/2.d3ade105.chunk.js.map": "/static/js/2.d3ade105.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.92495db7be1e4b91c3c0610b473bccfe.js": "/precache-manifest.92495db7be1e4b91c3c0610b473bccfe.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/2.25b83785.chunk.css.map": "/static/css/2.25b83785.chunk.css.map",
+    "static/css/main.831eea4d.chunk.css.map": "/static/css/main.831eea4d.chunk.css.map",
+    "static/media/water.webm": "/static/media/water.96bdca6b.webm",
+    "static/media/water.mp4": "/static/media/water.9d8d4419.mp4"
+  }
+}
